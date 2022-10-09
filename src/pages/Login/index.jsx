@@ -24,6 +24,7 @@ export const Login = () => {
       email: '',
       password: '',
     },
+    mode: 'onChange'
   })
 
   const onSubmit = async (values) => {
@@ -36,7 +37,7 @@ export const Login = () => {
     if ('token' in data.payload) {
       window.localStorage.setItem('token', data.payload.token)
     }
-  };
+  }
 
     if (isAuth) {
       return <Navigate to='/' />
@@ -52,8 +53,8 @@ export const Login = () => {
             className={styles.field}
             label="E-Mail"
             type='email'
-            error={Boolean(errors.email?.message)}
-            helperText={errors.email?.message}
+            error={Boolean(errors.email ?.message)}
+            helperText={errors.email ?.message}
             {...register('email', { required: 'Укажите почту' })}
             fullWidth
           />
@@ -61,12 +62,11 @@ export const Login = () => {
             className={styles.field}
             label="Пароль"
             type='password'
-            error={Boolean(errors.password?.message)}
-            helperText={errors.password?.message}
+            error={Boolean(errors.password ?.message)}
+            helperText={errors.password ?.message}
             {...register('password', { required: 'Введите пароль' })}
             fullWidth />
-
-          <Button type='submit' size="large" variant="contained" fullWidth>
+          <Button disabled={!isValid} type='submit' size="large" variant="contained" fullWidth>
             Войти
           </Button>
         </form>
