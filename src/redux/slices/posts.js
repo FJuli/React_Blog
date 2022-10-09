@@ -58,9 +58,9 @@ const postsSlice = createSlice({
             state.tags.status = 'error';
         },
         //Удаление статей
-        /* [fetchRemovePost.pending]: (state) => {
+        [fetchRemovePost.pending]: (state, action) => {
             state.posts.items = state.posts.items.filter((obj) => obj._id === action.meta.arg)
-        }, */
+        },
     }
 })
 
